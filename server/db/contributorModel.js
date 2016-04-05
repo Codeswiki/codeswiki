@@ -1,6 +1,6 @@
 "use strict";
 
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const contributorSchema = mongoose.Schema({
 	id: {type: String, required: true},
