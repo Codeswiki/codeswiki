@@ -2,7 +2,7 @@
 
 import mongoose from 'mongoose';
 
-mongoose.connect(/*db address*/);
+mongoose.connect(localhost:27017);
 
 const articleSchema = mongoose.Schema({
 	title: String,
