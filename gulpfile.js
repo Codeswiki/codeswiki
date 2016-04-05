@@ -1,20 +1,21 @@
-var gulp = require('gulp');
-var browserify = require('browserify');
-var watchify = require('watchify');
-var source = require('vinyl-source-stream');
-var notify = require('gulp-notify');
+"use strict";
+const gulp = require('gulp');
+const browserify = require('browserify');
+const watchify = require('watchify');
+const source = require('vinyl-source-stream');
+const notify = require('gulp-notify');
 
 function handleErrors() {
   notify.onError({
-    title : 'Compile Error',
+    title : 'Compile Error', 
     message : '<%= error.message %>'
   }).apply(this, arguments);
   this.emit('end'); //keeps gulp from hanging on this task
 }
 
 function buildScript(file) {
-  var props = {
-    entries : ['./src/' + file],
+  const props = {
+    entries : ['./client/' + file],
     debug : true,
     transform : [
       ['babelify', { presets: ['es2015', 'react'] }]
@@ -22,10 +23,10 @@ function buildScript(file) {
   };
 
   //watchify if watch set to true. otherwise browserify once
-  var bundler = watchify(browserify(props));
+  const bundler = watchify(browserify(props));
 
   function rebundle(){
-    var stream = bundler.bundle();
+    const stream = bundler.bundle();
     return stream
       .on('error', handleErrors)
       .pipe(source('bundle.js'))
@@ -33,7 +34,7 @@ function buildScript(file) {
   }
 
   bundler.on('update', function() {
-    var updateStart = Date.now();
+    const updateStart = Date.now();
     rebundle();
     console.log('Updated!', (Date.now() - updateStart) + 'ms');
   })
@@ -41,7 +42,6 @@ function buildScript(file) {
   // run it once the first time buildScript is called
   return rebundle();
 }
-
 
 // run 'scripts' task first, then watch for future changes
 gulp.task('default', ['scripts']);
