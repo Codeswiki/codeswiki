@@ -2,6 +2,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import moment from 'moment';
 
 const Headline = require('./headline.jsx');
 
@@ -16,15 +17,15 @@ const App = React.createClass({
 		// topArticles: [] Hard-coded below for testing
 		return { 
 			topArticles: [{id: '00000001',
-											updated: '1459914193791',
+											updated: 1459914193791,
 											title: "How to train your keyboard"
 										},
 										{id: '00000002',
-											updated: '1459914193795',
+											updated: 1459924203795,
 											title: "Cooking for Milennials"
 										},
 										{	id: '00000003',
-											updated: '1459914193797',
+											updated: 1459934213797,
 											title: "CSS Sucks"
 										}]
 		};
@@ -32,10 +33,10 @@ const App = React.createClass({
 	},
 
 	render: function() {
-		console.log(this.state);
+		console.log(this.state.topArticles[2].updated);
 		let articleHeadlines = this.state.topArticles.map((article) => {
 			return (
-				<Headline key={article.id} title={article.title} updated={article.updated} />
+				<Headline key={article.id} title={article.title} updated={moment(article.updated).format('MMMM Do YYYY, hh:mm a')} />
 				);
 		});
 

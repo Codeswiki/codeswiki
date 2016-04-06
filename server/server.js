@@ -11,7 +11,18 @@ const mongoose = require('mongoose');
 const articleController = require('./db/articleController');
 const contributorController = require('./db/contributorController');
 
-console.log('Server is running');
+let db;
+
+// mongoose.connect(JSON.parse(fs.readFileSync(__dirname + '/db/config.json','utf8')).uri, function() {
+//   connectedToDB = true;
+//   console.log('connected to mongo');
+// });
+
+mongoose.connect('mongodb://localhost:27017/test', function() {
+	db = mongoose.connection;
+	db.on('open', () => {console.log('Connected to MongoDB');});
+	db.on('error', (err) => {console.error(err);});
+});
 
 app.use(express.static('./client/static_pages'));
 

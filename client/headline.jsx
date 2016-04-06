@@ -21,7 +21,7 @@ const Headline = React.createClass({
 		
 		return (
 			<div key={this.props.key}>
-				<h4>{this.props.title}</h4>
+				<span><b>{this.props.title}</b></span>
 				<span>{this.props.updated}</span>
 			</div>
 		);
