@@ -1,6 +1,6 @@
 "use strict";
 
-const contributorModel = require('./contributorModel');
+const Contributor = require('./contributorModel');
 
 module.exports = {
 

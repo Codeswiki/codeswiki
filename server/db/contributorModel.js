@@ -12,4 +12,4 @@ const contributorSchema = mongoose.Schema({
 	tags: {type: [String], required: true}
 });
 
-module.exports = mongoose.model('Contributor', contributorSchema);
+module.exports = mongoose.model('contributor', contributorSchema);

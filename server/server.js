@@ -13,12 +13,7 @@ const contributorController = require('./db/contributorController');
 
 let db;
 
-// mongoose.connect(JSON.parse(fs.readFileSync(__dirname + '/db/config.json','utf8')).uri, function() {
-//   connectedToDB = true;
-//   console.log('connected to mongo');
-// });
-
-mongoose.connect('mongodb://localhost:27017/test', function() {
+mongoose.connect(JSON.parse(fs.readFileSync(__dirname + '/db/config.json', 'utf8')).uri, function() {
 	db = mongoose.connection;
 	db.on('open', () => {console.log('Connected to MongoDB');});
 	db.on('error', (err) => {console.error(err);});
@@ -27,6 +22,7 @@ mongoose.connect('mongodb://localhost:27017/test', function() {
 app.use(express.static('./client/static_pages'));
 
 app.get('*', (req, res) => {
+	console.log("Got a request!");
 	fs.readFile('./build/bundle.js', (err, data) => {
 		if(err) {
 			res.status('504');
@@ -38,4 +34,4 @@ app.get('*', (req, res) => {
 	});
 });
 
-app.listen(3000);
+app.listen(8080);

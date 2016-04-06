@@ -1,6 +1,10 @@
 "use strict";
-const articleModel =  require('./articleModel');
+const Article =  require('./articleModel');
 
 module.exports = {
+
+	getTopArticles: function() {
+		Article.find({}).sort('updated');
+	}
 
 };
