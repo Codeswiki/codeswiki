@@ -16,24 +16,32 @@ const App = React.createClass({
 		
 		// topArticles: [] Hard-coded below for testing
 		return { 
-			topArticles: [{id: '00000001',
-											updated: 1459914193791,
-											title: "How to train your keyboard"
-										},
-										{id: '00000002',
-											updated: 1459924203795,
-											title: "Cooking for Milennials"
-										},
-										{	id: '00000003',
-											updated: 1459934213797,
-											title: "CSS Sucks"
-										}]
+			topArticles: []
+
+									// [{id: '00000001',
+									// 		updated: 1459914193791,
+									// 		title: "How to train your keyboard"
+									// 	},
+									// 	{id: '00000002',
+									// 		updated: 1459924203795,
+									// 		title: "Cooking for Milennials"
+									// 	},
+									// 	{	id: '00000003',
+									// 		updated: 1459934213797,
+									// 		title: "CSS Sucks"
+									// 	}]
 		};
 
 	},
 
+	componentDidMount: function() {
+		$.getJSON('/articles').then(
+			(data) => this.setState({topArticles: data}),
+			(err) => console.error('Unable to fetch articles')
+			);
+	},
+
 	render: function() {
-		console.log(this.state.topArticles[2].updated);
 		let articleHeadlines = this.state.topArticles.map((article) => {
 			return (
 				<Headline key={article.id} title={article.title} updated={moment(article.updated).format('MMMM Do YYYY, hh:mm a')} />
