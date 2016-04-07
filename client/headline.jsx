@@ -20,10 +20,13 @@ const Headline = React.createClass({
 	render: function () {
 		
 		return (
-			<div key={this.props.key}>
-				<span><b>{this.props.title}</b></span>
-				<span>{this.props.updated}</span>
-			</div>
+			<tr key={this.props.key}>
+				<td className="article_title">{this.props.title}</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td className="last_updated"><b>Last Updated:</b>{this.props.updated}</td>
+			</tr>
 		);
 	}
 

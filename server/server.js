@@ -21,8 +21,6 @@ mongoose.connect(JSON.parse(fs.readFileSync(__dirname + '/db/config.json', 'utf8
 
 app.use(express.static('./client/static_pages'));
 
-// app.use(articleController.getTopArticles);
-
 app.get('/bundle.js', (req, res) => {
 	console.log("Got a request!", Date.now());
 	fs.readFile('./build/bundle.js', (err, data) => {

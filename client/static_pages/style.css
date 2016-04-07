@@ -13,7 +13,8 @@ h1 {
 }
 
 #header {
-
+	background-color: #03A3EA;
+	color: white;
 }
 
 #footer {
@@ -22,4 +23,31 @@ h1 {
 	left: 20%;
 	right: 20%;
 	text-align: center;
+}
+
+table {
+	margin: auto;
+	width: 90%;
+}
+
+tr {
+	text-align: left;
+	padding: 5px;
+}
+
+td {
+	
+}
+
+.article_title {
+	font-size: 14px;
+}
+
+.last_updated {
+	font-size: 10px;
+	text-align: right;
+}
+
+span {
+	padding: 10px;
 }
