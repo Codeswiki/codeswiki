@@ -6,17 +6,11 @@ import moment from 'moment';
 
 const Headline = require('./headline.jsx');
 
-class App extends React.component {
+class App extends React.Component {
 
 	constructor() {
-		super(props);
-	}
-
-	getInitialState() {
-		return { 
-			topArticles: []
-		};
-
+		super();
+		this.state = {topArticles: []};
 	}
 
 	componentDidMount() {

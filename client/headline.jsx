@@ -3,14 +3,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class Headline extends React.component {
+class Headline extends React.Component {
 
 	constructor() {
-		super(props);
-	}
-
-	getInitalState() {
-		
+		super();
 	}
 
 	componentWillMount() {
