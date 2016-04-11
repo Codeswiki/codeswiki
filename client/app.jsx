@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import moment from 'moment';
 
 const Headline = require('./headline.jsx');
+const Article = require('./article.jsx');
 
 class App extends React.Component {
 
@@ -35,6 +36,7 @@ class App extends React.Component {
 			</table>
 
 			);
+
 	}
 
 }

@@ -17,4 +17,6 @@ class Article extends React.Component {
 		return <Editor editorState={editorState} onChange={this.onChange} />;
 	}
 
-};
+}
+
+module.exports = Article;
