@@ -6,30 +6,34 @@ import moment from 'moment';
 
 const Headline = require('./headline.jsx');
 
-const App = React.createClass({
+class App extends React.component {
 
-	getInitialState: function() {
+	constructor() {
+		super(props);
+	}
+
+	getInitialState() {
 		return { 
 			topArticles: []
 		};
 
-	},
+	}
 
-	componentDidMount: function() {
+	componentDidMount() {
 		$.getJSON('/articles').then(
 			(data) => this.setState({topArticles: data}),
 			(err) => console.error('Unable to fetch articles')
 			);
-	},
+	}
 
-	render: function() {
+	render() {
 		let articleHeadlines = this.state.topArticles.map((article) => {
 			return (
 				<Headline key={article.id} title={article.title} updated={moment(article.updated).format('MMMM Do YYYY, hh:mm a')} />
 				);
 		});
 
-		return(
+		return (
 			<table id='app-main' key='app-main' className='container'>
 				<tbody>
 				{articleHeadlines}
@@ -39,6 +43,6 @@ const App = React.createClass({
 			);
 	}
 
-});
+}
 
 ReactDOM.render(<App />, document.getElementById('app'));

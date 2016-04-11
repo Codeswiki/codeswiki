@@ -3,21 +3,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const Headline = React.createClass({
+class Headline extends React.component {
 
-	getInitalState: function() {
+	constructor() {
+		super(props);
+	}
+
+	getInitalState() {
 		
-	},
+	}
 
-	componentWillMount: function() {
+	componentWillMount() {
 
-	},
+	}
 
-	componentDidMount: function() {
+	componentDidMount() {
 
-	},
+	}
 
-	render: function () {
+	render() {
 		
 		return (
 			<tr key={this.props.key}>
@@ -30,6 +34,6 @@ const Headline = React.createClass({
 		);
 	}
 
-});
+}
 
 module.exports = Headline;

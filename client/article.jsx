@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Editor, EditorState} from 'draft-js';
 
-class Article extends React.component({
+class Article extends React.component {
 	
 	constructor(props) {
 		super(props);
@@ -21,4 +21,4 @@ class Article extends React.component({
 		return <Editor editorState={editorState} onChange={this.onChange} />;
 	}
 
-});
+};
