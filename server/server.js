@@ -6,6 +6,8 @@ const fs = require('fs');
 const express = require('express');
 const app = express();
 
+const bodyParser = require('body-parser');
+
 const mongoose = require('mongoose');
 
 const articleController = require('./db/articleController');
@@ -16,13 +18,17 @@ let db;
 mongoose.connect(JSON.parse(fs.readFileSync(__dirname + '/db/config.json', 'utf8')).uri, function() {
 	db = mongoose.connection;
 	db.on('open', () => {console.log('Connected to MongoDB');});
-	db.on('error', (err) => {console.error(err);});
+	db.on('error', (err) => {console.error("Database Error: ", err);});
 });
 
 app.use(express.static('./client/static_pages'));
 
+app.use(bodyParser());
+
 app.get('/bundle.js', (req, res) => {
+	
 	console.log("Got a request!", Date.now());
+	
 	fs.readFile('./build/bundle.js', (err, data) => {
 		if(err) {
 			res.status('504');
@@ -33,11 +39,15 @@ app.get('/bundle.js', (req, res) => {
 		res.set('Content-Type', 'text/javascript');
 		res.send(data);
 	});
+
 });
 
 app.get('/articles', (req, res) => {
-	// console.log('The client wants articles. Sorry, client');
 	articleController.getTopArticles(req, res);
+});
+
+app.post'/articles', (req, res) => {
+	articleController.saveArticle(req, res);
 });
 
 app.listen(8080);
