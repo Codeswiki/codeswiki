@@ -29,13 +29,14 @@ class App extends React.Component {
 		});
 
 		return (
-			<div className='app'>
-				<ul role="nav">
+			<div className="app">
+				<ul className="main_nav" role="nav">
 					<li><Link to="/">Home</Link></li>
 					<li><Link to="/about">About</Link></li>
+					<li><Link to="/article">Create a New Article</Link><li>
 				</ul>
 	
-				<table id='app-main' key='app-main' className='container'>
+				<table id="app-main" key="app-main" className="container">
 					<tbody>
 					{articleHeadlines}
 					</tbody>
