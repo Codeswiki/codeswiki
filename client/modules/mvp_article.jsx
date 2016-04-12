@@ -22,6 +22,12 @@ class Article extends React.Component {
       this.setState({content: blocks});
     }
 
+    this.updateTextBlock = (index, content) => {
+      oldContent = this.state.content;
+      oldContent[index] = content;
+      this.setState({content: oldContent});
+    }
+
     this.save = (evt) => {
       evt.preventDefault();
       console.log("Save method called");
@@ -33,8 +39,11 @@ class Article extends React.Component {
 
 	render() {
 
+    let textBlockIndex = -1;
+
     let textBlocks = this.state.content.map(content => {
-      return <TextBlock content={content} />
+      textBlockIndex++;
+      return <TextBlock content={content} index={textBlockIndex} onChange={(index, content) => this.updateTextBlock} />
     });
 
 		return (
