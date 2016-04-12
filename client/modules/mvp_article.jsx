@@ -10,10 +10,10 @@ class Article extends React.Component {
     super(props);
 		
     this.state = {
-      articleTitle: "",
-      contributors: [],
-      tags: [],
-      content: []
+      articleTitle: "Article Title",
+      contributors: ["Your Name"],
+      tags: ["Tag1", "Tag2"],
+      content: ["Type your article here."]
     };
     
     this.insertNewBlock = () => {
@@ -25,7 +25,7 @@ class Article extends React.Component {
     this.save = (evt) => {
       evt.preventDefault();
       console.log("Save method called");
-      console.log(JSON.stringify(this.state));
+      console.log(evt);
       // $.post('/articles', JSON.stringify(this.state));
     }
 
@@ -49,13 +49,11 @@ class Article extends React.Component {
 				<button onClick={this.insertNewBlock}>Insert New Block</button>
 
 				<form onSubmit={this.save}>
-					<input type="text" placeholder="Article Title"/>
-					<input type="text" placeholder="Contributor Name"/>
-					<input type="text" placeholder="tag1, tag2 ..."/>
+					<input type="text" defaultValue={this.state.articleTitle} />
+					<input type="text" defaultValue={this.state.contributors.join(', ')}/>
+					<input type="text" defaultValue={this.state.tags.join(', ')}/>
           <button type="submit">Save</button>
-
           {textBlocks}
-
 				</form>
 
 			</div>
