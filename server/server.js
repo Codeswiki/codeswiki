@@ -46,7 +46,7 @@ app.get('/articles', (req, res) => {
 	articleController.getTopArticles(req, res);
 });
 
-app.post'/articles', (req, res) => {
+app.put('/articles', (req, res) => {
 	articleController.saveArticle(req, res);
 });
 
