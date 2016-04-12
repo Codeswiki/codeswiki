@@ -4,8 +4,8 @@ import React from 'react';
 
 class Headline extends React.Component {
 
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 	}
 
 	componentWillMount() {

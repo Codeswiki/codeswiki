@@ -9,8 +9,8 @@ const Article = require('./article.jsx');
 
 class App extends React.Component {
 
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {topArticles: []};
 	}
 
@@ -29,16 +29,18 @@ class App extends React.Component {
 		});
 
 		return (
-			<ul role="nav">
-				<li><Link to="/">Home</Link></li>
-				<li><Link to="/about">About</Link></li>
-			</ul>
-
-			<table id='app-main' key='app-main' className='container'>
-				<tbody>
-				{articleHeadlines}
-				</tbody>
-			</table>
+			<div className='app'>
+				<ul role="nav">
+					<li><Link to="/">Home</Link></li>
+					<li><Link to="/about">About</Link></li>
+				</ul>
+	
+				<table id='app-main' key='app-main' className='container'>
+					<tbody>
+					{articleHeadlines}
+					</tbody>
+				</table>
+			</div>
 
 			);
 
@@ -46,4 +48,4 @@ class App extends React.Component {
 
 }
 
-Module.exports = App;
+module.exports = App;
