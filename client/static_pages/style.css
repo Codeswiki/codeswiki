@@ -12,9 +12,28 @@ h1 {
 	padding: 0;
 }
 
-#header {
+a {
+	text-decoration: none;
+	color: white;
+	padding: 5px;
+	font-family: Helvetica Arial sans-serif;
+}
+
+ul {
+	width: 95%;
 	background-color: #03A3EA;
 	color: white;
+	display: inline-block;
+}
+
+li {
+	display: inline-block;
+	float: left;
+}
+
+li .rightside_link {
+	float: right;
+	color: red;
 }
 
 #footer {
@@ -23,6 +42,7 @@ h1 {
 	left: 20%;
 	right: 20%;
 	text-align: center;
+	font-size: 12px;
 }
 
 table {
