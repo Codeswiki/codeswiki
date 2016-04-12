@@ -8,7 +8,7 @@ const articleSchema = mongoose.Schema({
 	updated: {type: Date, required: true},
 	contributors: {type: [String], required: true},
 	tags: {type: [String], required: true},
-	content: {type: String, required: true}
+	content: {type: [String], required: true}
 });
 
 module.exports = mongoose.model('article', articleSchema);

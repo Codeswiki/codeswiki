@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import moment from 'moment';
 
 const Headline = require('./headline.jsx');
-const Article = require('./article.jsx');
+const Article = require('./mvp_article.jsx');
 
 class App extends React.Component {
 

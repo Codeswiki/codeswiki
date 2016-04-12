@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { Link } from 'react-router';
-import { Editor, EditorState, RichUtils, convertToRaw, convertFromRaw } from 'draft-js';
+import Draft from 'draft-js';
+import { AtomicBlockUtils, Editor, EditorState, Entity, RichUtils, convertToRaw, convertFromRaw } from 'draft-js';
 
 class Article extends React.Component {
 	
@@ -11,15 +12,18 @@ class Article extends React.Component {
 		this.state = {editorState: EditorState.createEmpty()};
 
 		this.focus = () => this.refs.editor.focus();
+
     this.onChange = (editorState) => {
     	console.log("Pre-raw: ", this.state.editorState.getCurrentContent());
-    	console.log("To Raw: ", convertToRaw(this.state.editorState.getCurrentContent()));
+    	console.log("Raw: ", convertToRaw(this.state.editorState.getCurrentContent()));
     	console.log("From Raw", convertFromRaw(convertToRaw(this.state.editorState.getCurrentContent())));
     	// console.log(convertToRaw);
     	this.setState({editorState});
     }
 
     this.handleKeyCommand = (command) => this._handleKeyCommand(command);
+    this.insertNewBlock = () => this._insertNewBlock();
+    this.save = (e) => this._save(e);
     this.toggleBlockType = (type) => this._toggleBlockStyle(type);
     this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
   }
@@ -32,6 +36,21 @@ class Article extends React.Component {
   		return true;
   	}
   	return false;
+  }
+
+  _insertNewBlock() {
+  	const newEntity = Entity.create (
+  		'TOKEN',
+  		'IMMUTABLE',
+  		{content: "New Text Goes Here"}
+  		);
+  	console.log(Draft);
+  	return AtomicBlockUtils.insertAtomicBlock(editorState, newEntity, ' ');
+  }
+
+  _save(e) {
+  	e.preventDefault;
+  	$.post()
   }
 
   _toggleBlockType(blockType) {
@@ -61,6 +80,15 @@ class Article extends React.Component {
 				<ul role="nav">
 					<li><Link to="/">Home</Link></li>
 				</ul>
+
+				<button onClick={this._save}>Save</button>
+				<button onClick={this.insertNewBlock}>Insert New Block</button>
+
+				<form>
+					<input type="text" placeholder="Article Title"/>
+					<input type="text" placeholder="Contributor Name"/>
+					<input type="text" placeholder="tag1, tag2 ..."/>
+				</form>
 
 				<div>
 					<Editor editorState={editorState} onChange={this.onChange} />
