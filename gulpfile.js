@@ -45,4 +45,4 @@ function buildScript(file) {
 
 // run 'scripts' task first, then watch for future changes
 gulp.task('default', ['scripts']);
-gulp.task('scripts', buildScript.bind(this, 'index.js'));
+gulp.task('scripts', buildScript.bind(this, 'index.jsx'));
