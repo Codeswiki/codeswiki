@@ -47,9 +47,9 @@ class Article extends React.Component {
 				<button onClick={this.insertNewBlock}>Insert New Block</button>
 
 				<form onSubmit={this.save}>
-					<input type="text" defaultValue={this.state.articleTitle} onChange={this.setState({articleTitle: this.value})} />
-					<input type="text" defaultValue={this.state.contributors.join(', ')}/>
-					<input type="text" defaultValue={this.state.tags.join(', ')}/>
+					<input type="text" value={this.state.articleTitle} />
+					<input type="text" value={this.state.contributors.join(', ')}/>
+					<input type="text" value={this.state.tags.join(', ')}/>
           <button type="submit">Save</button>
           {textBlocks}
 				</form>
