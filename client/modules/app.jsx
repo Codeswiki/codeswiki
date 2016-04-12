@@ -34,7 +34,7 @@ class App extends React.Component {
 				<ul className="main_nav" role="nav">
 					<li><Link to="/">Home</Link></li>
 					<li><Link to="/about">About</Link></li>
-					<li><Link to="/article/new">New Article</Link></li>
+					<li><Link to="/article">New Article</Link></li>
 				</ul>
 	
 				<ol id="app-main" key="app-main" className="container">

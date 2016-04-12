@@ -1,8 +1,8 @@
 "use strict";
 
 import React from 'react';
-import {Link} from 'react-router';
-import {Editor, EditorState} from 'draft-js';
+import { Link } from 'react-router';
+import { Editor, EditorState, RichUtils, convertToRaw, convertFromRaw } from 'draft-js';
 
 class Article extends React.Component {
 	
@@ -12,7 +12,10 @@ class Article extends React.Component {
 
 		this.focus = () => this.refs.editor.focus();
     this.onChange = (editorState) => {
-    	console.log({editorState});
+    	console.log("Pre-raw: ", this.state.editorState.getCurrentContent());
+    	console.log("To Raw: ", convertToRaw(this.state.editorState.getCurrentContent()));
+    	console.log("From Raw", convertFromRaw(convertToRaw(this.state.editorState.getCurrentContent())));
+    	// console.log(convertToRaw);
     	this.setState({editorState});
     }
 
@@ -23,7 +26,7 @@ class Article extends React.Component {
 
   _handleKeyCommand(command) {
   	const {editorState} = this.state;
-  	const newState = Utils.handleKeyCommand(editorState, command);
+  	const newState = RichUtils.handleKeyCommand(editorState, command);
   	if(newState) {
   		this.onChange(newState);
   		return true;
@@ -33,7 +36,7 @@ class Article extends React.Component {
 
   _toggleBlockType(blockType) {
   	this.onChange(
-  		Utils.toggleBlockType(
+  		RichUtils.toggleBlockType(
   			this.state.editorState,
   			blockType)
   		);
@@ -41,7 +44,7 @@ class Article extends React.Component {
 
   _toggleInlineStyle(inlineStyle) {
   	this.onChange(
-  		Utils.toggleInlineStyle(
+  		RichUtils.toggleInlineStyle(
   			this.state.editorState,
   			inlineStyle
   		)
