@@ -43,7 +43,7 @@ class Article extends React.Component {
 
     let textBlocks = this.state.content.map(content => {
       textBlockIndex++;
-      return <TextBlock content={content} index={textBlockIndex} onChange={(index, content) => this.updateTextBlock} />
+      return <TextBlock content={content} index={textBlockIndex} updateTextBlock={this.updateTextBlock.bind(this)} onChange={(index, content) => console.log} />
     });
 
 		return (
