@@ -30,17 +30,16 @@ class App extends React.Component {
 
 		return (
 			<div className="app">
+				
 				<ul className="main_nav" role="nav">
 					<li><Link to="/">Home</Link></li>
 					<li><Link to="/about">About</Link></li>
-					<li><Link to="/article">New Article</Link></li>
+					<li><Link to="/article/new">New Article</Link></li>
 				</ul>
 	
-				<table id="app-main" key="app-main" className="container">
-					<tbody>
+				<ol id="app-main" key="app-main" className="container">
 					{articleHeadlines}
-					</tbody>
-				</table>
+				</ol>
 
 				<div className="footer">
 					<ul className="footer_nav" role="nav">

@@ -1,6 +1,7 @@
 "use strict";
 
 import React from 'react';
+import { Link } from 'react-router';
 
 class Headline extends React.Component {
 
@@ -19,13 +20,14 @@ class Headline extends React.Component {
 	render() {
 		
 		return (
-			<tr key={this.props.key}>
-				<td className="article_title">{this.props.title}</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td className="last_updated"><b>Last Updated:</b>{this.props.updated}</td>
-			</tr>
+			<li key={this.props.key}>
+				<Link to="/article/:title">
+					<ul>
+						<li className="headline_title">{this.props.title}</li>
+						<li className="headline_updated">{this.props.updated}</li>
+					</ul>
+				</Link>
+			</li>
 		);
 	}
 
