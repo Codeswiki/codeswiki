@@ -11,8 +11,8 @@ class Article extends React.Component {
 		
     this.state = {
       articleTitle: "Article Title",
-      contributors: ["Your Name"],
-      tags: ["Tag1", "Tag2"],
+      contributors: ["Contributor 1", "Contributor 2", "..."],
+      tags: ["Tag1", "Tag2", "..."],
       content: ["Type your article here."]
     };
     
@@ -25,7 +25,7 @@ class Article extends React.Component {
     this.save = (evt) => {
       evt.preventDefault();
       console.log("Save method called");
-      console.log(evt);
+      console.log(evt, evt.target);
       // $.post('/articles', JSON.stringify(this.state));
     }
 
