@@ -26,7 +26,7 @@ li {
 	float: left;
 }
 
-#footer {
+.footer {
 	position: absolute;
 	bottom: 1%;
 	left: 20%;
@@ -37,7 +37,7 @@ li {
 	background-color: white;
 }
 
-#footer a {
+.footer a {
 	color: black;
 }
 
