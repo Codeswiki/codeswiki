@@ -44,8 +44,6 @@ class Article extends React.Component {
 					<li><Link to="/">Home</Link></li>
 				</ul>
 
-				<button onClick={this.save}>Save</button>
-
 				<button onClick={this.insertNewBlock}>Insert New Block</button>
 
 				<form onSubmit={this.save}>
