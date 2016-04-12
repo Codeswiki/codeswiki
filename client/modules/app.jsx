@@ -32,8 +32,8 @@ class App extends React.Component {
 			<div className="app">
 				<ul className="main_nav" role="nav">
 					<li><Link to="/">Home</Link></li>
-					<li className="rightside_link"><Link to="/about">About</Link></li>
-					<li className="rightside_link"><Link to="/article">New Article</Link></li>
+					<li><Link to="/about">About</Link></li>
+					<li><Link to="/article">New Article</Link></li>
 				</ul>
 	
 				<table id="app-main" key="app-main" className="container">
@@ -41,6 +41,13 @@ class App extends React.Component {
 					{articleHeadlines}
 					</tbody>
 				</table>
+
+				<div className="footer">
+					<ul className="footer_nav" role="nav">
+						<li>Built by Cohort 6</li>
+						<li><Link to="/about">Contrubutors</Link></li>
+					</ul>
+				</div>
 			</div>
 
 			);

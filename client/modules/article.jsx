@@ -1,6 +1,7 @@
 "use strict";
 
 import React from 'react';
+import {Link} from 'react-router';
 import {Editor, EditorState} from 'draft-js';
 
 class Article extends React.Component {
@@ -8,14 +9,98 @@ class Article extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {editorState: EditorState.createEmpty()};
-    this.onChange = (editorState) => this.setState({editorState});
+
+		this.focus = () => this.refs.editor.focus();
+    this.onChange = (editorState) => {
+    	console.log({editorState});
+    	this.setState({editorState});
+    }
+
+    this.handleKeyCommand = (command) => this._handleKeyCommand(command);
+    this.toggleBlockType = (type) => this._toggleBlockStyle(type);
+    this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
+  }
+
+  _handleKeyCommand(command) {
+  	const {editorState} = this.state;
+  	const newState = Utils.handleKeyCommand(editorState, command);
+  	if(newState) {
+  		this.onChange(newState);
+  		return true;
+  	}
+  	return false;
+  }
+
+  _toggleBlockType(blockType) {
+  	this.onChange(
+  		Utils.toggleBlockType(
+  			this.state.editorState,
+  			blockType)
+  		);
+  }
+
+  _toggleInlineStyle(inlineStyle) {
+  	this.onChange(
+  		Utils.toggleInlineStyle(
+  			this.state.editorState,
+  			inlineStyle
+  		)
+  	);
   }
 
 	render() {
+
 		const {editorState} = this.state;
-		return <Editor editorState={editorState} onChange={this.onChange} />;
+
+		return (
+			<div className="article-root">
+
+				<ul role="nav">
+					<li><Link to="/">Home</Link></li>
+				</ul>
+
+				<div>
+					<Editor editorState={editorState} onChange={this.onChange} />
+				</div>
+
+			</div>
+			);
 	}
 
 }
+
+class StyleButton extends React.Component {
+	constructor(props) {
+		super(props);
+		this.onToggle = (e) => {
+			e.preventDefault;
+			this.props.onToggle(this.props.style);
+		};
+	}
+
+	render() {
+		return (
+			<span className="style-button" onMouseDown="this.onToggle">
+				{this.props.label}
+			</span>
+			);
+	}
+}
+
+const BLOCK_TYPES = [
+	{label: 'H1', style: 'header-one'},
+	{label: 'H2', style: 'header-two'},
+	{label: 'H3', style: 'header-three'},
+	{label: 'H4', style: 'header-four'},
+	{label: 'H5', style: 'header-five'},
+	{label: 'H6', style: 'header-six'},
+	{label: 'Blockquote', style: 'blockquote'},
+	{label: 'UL', style: 'unordered-list-item'},
+	{label: 'OL', style: 'ordered-list-item'},
+	{label: 'Code Block', style: 'code-block'}
+];
+
+
+
 
 module.exports = Article;
