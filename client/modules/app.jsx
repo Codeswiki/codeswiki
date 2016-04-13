@@ -43,7 +43,7 @@ class App extends React.Component {
 
 				<div className="footer">
 					<ul className="footer_nav" role="nav">
-						<li>Built by Cohort 6</li>
+						<li>Built by Cohort 6                    </li>
 						<li><Link to="/about">Contrubutors</Link></li>
 					</ul>
 				</div>
