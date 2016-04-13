@@ -59,6 +59,7 @@ class Article extends React.Component {
 					<input type="text" value={this.state.articleTitle} />
 					<input type="text" value={this.state.contributors.join(', ')}/>
 					<input type="text" value={this.state.tags.join(', ')}/>
+          <br></br>
           {textBlocks}
 				</form>
 
