@@ -7,7 +7,7 @@ h1 {
 	padding: 0;
 }
 
-a {
+.main_nav a {
 	text-decoration: none;
 	color: white;
 	padding: 5px;
@@ -61,5 +61,5 @@ input {
 
 textarea {
 	display: inline-block;
-	width: 40%;
+	width: 80%;
 }
