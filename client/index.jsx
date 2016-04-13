@@ -8,9 +8,9 @@ import Article from './modules/mvp_article.jsx';
 ReactDOM.render((
 	<Router history = {hashHistory}>
 		
-		<Route path="/" component={App}>
-			<Route path="/about" component={About}/>
-		</Route>
+		<Route path="/" component={App} />
+
+		<Route path="/about" component={About}/>
 
 		<Route path="/article" component={Article}/>
 		
