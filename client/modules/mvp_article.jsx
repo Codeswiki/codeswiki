@@ -53,9 +53,8 @@ class Article extends React.Component {
 					<li><Link to="/">Home</Link></li>
 				</ul>
 
-				<button onClick={this.insertNewBlock}>Insert New Block</button>
-
 				<form onSubmit={this.save}>
+          <button onClick={this.insertNewBlock}>Insert New Block</button>
           <button type="submit">Save</button>
 					<input type="text" value={this.state.articleTitle} />
 					<input type="text" value={this.state.contributors.join(', ')}/>
