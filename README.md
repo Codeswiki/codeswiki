@@ -1,4 +1,4 @@
-# codeswiki
-An internal wiki for Codesmith built using Mongo, Express, React and Node.js. Currently in alpha.
+codeswiki
+===========
 
-[trello](https://trello.com/b/biju7JIE/codeswiki)
+Open-source wiki for engineering teams
