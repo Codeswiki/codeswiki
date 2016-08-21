@@ -20,7 +20,8 @@
     "eslint": "^1.10.3",
     "express": "^4.12.2",
     "kraken-js": "^1.0.3",
-    "makara": "^2.0.3"
+    "makara": "^2.0.3",
+    "mongoose": "^4.5.9"
   },
   "devDependencies": {
     "babel-eslint": "^6.1.2",
